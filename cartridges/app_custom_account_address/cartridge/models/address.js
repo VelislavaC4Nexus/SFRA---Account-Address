@@ -30,11 +30,14 @@ function createAddressObject(addressObject) {
             suffix: addressObject.suffix,
             suite: addressObject.suite,
             title: addressObject.title,
-            vat: addressObject.custom.v_vat ? addressObject.custom.v_vat : null
         };
 
         if (result.stateCode === 'undefined') {
             result.stateCode = '';
+        }
+
+        if(addressObject.custom && Object.hasOwnProperty.call(addressObject.custom, 'v_vat')){
+            result.vat = addressObject.custom.v_vat;
         }
 
         if (Object.hasOwnProperty.call(addressObject, 'countryCode')) {
