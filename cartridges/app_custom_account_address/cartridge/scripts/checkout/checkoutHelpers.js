@@ -51,7 +51,7 @@ base.copyCustomerAddressToShipment = function (address, shipmentOrNull) {
         shippingAddress.setCountryCode(countryCode.value);
         shippingAddress.setPhone(address.phone);
         shippingAddress.companyName = address.companyName;
-       shippingAddress.custom.vat = address.raw.custom.v_vat;
+        shippingAddress.custom.vat = address.raw.custom.v_vat;
     });
 }
 
@@ -90,7 +90,7 @@ base.copyCustomerAddressToBilling = function (address) {
  * @param {Object} shippingData - the shipping data
  * @param {dw.order.Shipment} [shipmentOrNull] - the target Shipment
  */
-base.copyShippingAddressToShipment=function(shippingData, shipmentOrNull) {
+base.copyShippingAddressToShipment = function (shippingData, shipmentOrNull) {
     var data = shippingData
     var currentBasket = BasketMgr.getCurrentBasket();
     var shipment = shipmentOrNull || currentBasket.defaultShipment;
@@ -113,7 +113,7 @@ base.copyShippingAddressToShipment=function(shippingData, shipmentOrNull) {
         shippingAddress.setCountryCode(countryCode);
         shippingAddress.setPhone(shippingData.address.phone);
         shippingAddress.companyName = shippingData.address.companyName;
-       // shippingAddress.row.custom.v_vat = shippingData.address.vat;
+        shippingAddress.custom.vat = shippingData.address.vat;
 
         ShippingHelper.selectShippingMethod(shipment, shippingData.shippingMethod);
     });
@@ -124,7 +124,7 @@ base.copyShippingAddressToShipment=function(shippingData, shipmentOrNull) {
  * @param {Object} address - an address-similar Object (firstName, ...)
  * @param {Object} currentBasket - the current shopping basket
  */
-base.copyBillingAddressToBasket= function(address, currentBasket) {
+base.copyBillingAddressToBasket = function (address, currentBasket) {
     var billingAddress = currentBasket.billingAddress;
 
     Transaction.wrap(function () {
@@ -144,7 +144,7 @@ base.copyBillingAddressToBasket= function(address, currentBasket) {
             billingAddress.setPhone(address.phone);
         }
         billingAddress.companyName = address.companyName;
-        billingAddress.custom.vat = address.custom.v_vat;
+        billingAddress.custom.vat = address.raw.custom.v_vat;
     });
 }
 

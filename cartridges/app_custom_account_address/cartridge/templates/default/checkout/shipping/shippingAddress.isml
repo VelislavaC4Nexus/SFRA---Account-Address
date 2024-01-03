@@ -4,9 +4,8 @@
 <iselse/>
     <isset name="shippingAddress" value="${{}}" scope="page" />
 </isif>
-<div class="ml-3 mt-3">
+<div class="mb-4 mt-3">
     <isinclude template="account/components/addressFormRadioBtn" />
-
 </div>
 
 <div class="row company-name-vat">

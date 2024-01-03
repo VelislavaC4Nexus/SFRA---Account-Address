@@ -42,6 +42,7 @@ function getPreferredAddress(addressBook) {
 function account(currentCustomer, addressModel, orderModel) {
     module.superModule.call(this, currentCustomer, addressModel, orderModel);
     this.addresses = getAddresses(currentCustomer.addressBook);
+    this.preferredAddress =  addressModel || getPreferredAddress(currentCustomer.addressBook);
     
 }
 

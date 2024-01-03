@@ -79,7 +79,7 @@ function copyShippingAddress(address) {
         suffix: address.suffix,
         suite: address.suite,
         title: address.title,
-        vat: address.custom.v_vat
+        vat: address.custom.vat
     };
 }
 
