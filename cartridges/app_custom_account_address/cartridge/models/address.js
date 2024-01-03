@@ -2,7 +2,7 @@
 'use strict';
 
 /**
- * creates a plain object that contains address information
+ * creates a plain object that contains address information zz
  * @param {dw.order.OrderAddress} addressObject - User's address
  * @returns {Object} an object that contains information about the users address
  */
@@ -36,8 +36,10 @@ function createAddressObject(addressObject) {
             result.stateCode = '';
         }
 
-        if(addressObject.custom && Object.hasOwnProperty.call(addressObject.custom, 'v_vat')){
+        if (addressObject.custom && Object.hasOwnProperty.call(addressObject.custom, 'v_vat')) {
             result.vat = addressObject.custom.v_vat;
+        } else if (addressObject.custom && Object.hasOwnProperty.call(addressObject.custom, 'vat')) {
+            result.vat = addressObject.custom.vat
         }
 
         if (Object.hasOwnProperty.call(addressObject, 'countryCode')) {

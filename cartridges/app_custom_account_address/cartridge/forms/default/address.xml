@@ -4,7 +4,7 @@
 
 	<field formid="companyName" label="label.input.companyName" type="string" mandatory="false" binding="companyName" max-length="50" missing-error="address.companyName.missing" range-error="error.message.50orless" />
 
-	<field formid="vat" label="label.input.vat" type="string" mandatory="false" binding="vat" max-length="20" missing-error="address.vat.missing" range-error="error.message.20orless" />
+	<field formid="vat" label="label.input.vat" type="string" mandatory="false" binding="custom.v_vat" max-length="20" missing-error="address.vat.missing" range-error="error.message.20orless" />
 
 	<field formid="firstName" label="label.input.firstname.profile" type="string" mandatory="true" binding="firstName" max-length="50" missing-error="address.firstname.missing" range-error="error.message.50orless" />
 
