@@ -1,7 +1,6 @@
 <isscript>
         var assets = require('*/cartridge/scripts/assets.js');
         assets.addJs('/js/togglePassword.js');
-        assets.addCss('/css/tooglePassword.css');
 </isscript>
 <form action="${pdict.actionUrl}" class="login" method="POST" name="login-form">
     <div class="form-group required">
@@ -17,11 +16,14 @@
         <label class="form-control-label" for="login-form-password">
             ${Resource.msg('label.input.login.password', 'login', null)}
         </label>
-        <input type="password" id="login-form-password" required aria-required="true" class="form-control required"
-            aria-describedby="form-password-error" name="loginPassword">
-        <span class="toggle-password">
-            <i class="fa fa-eye-slash"></i>
-        </span>
+        <div class="d-flex">
+            <input type="password" id="login-form-password" required aria-required="true" class="form-control required"
+                aria-describedby="form-password-error" name="loginPassword">
+                  <!-- Add toggle eye icon -->
+            <span class="input-group-text btn js-toggle-password">
+                <i class="fa fa-eye"></i>
+            </span>
+        </div>
         <div class="invalid-feedback" id="form-password-error"></div>
     </div>
 

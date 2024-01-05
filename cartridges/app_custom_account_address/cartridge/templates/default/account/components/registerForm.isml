@@ -1,15 +1,22 @@
 <isscript>
         var assets = require('*/cartridge/scripts/assets.js');
         assets.addJs('/js/togglePassword.js');
-        assets.addCss('/css/tooglePassword.css');
+        assets.addJs('/js/reCaptcha.js');
 </isscript>
-<form action="${pdict.createAccountUrl}" class="registration" method="POST" name="${pdict.profileForm.htmlName}">
+<!--Load the JavaScript API (from reCAPTHCA docs)-->
+<isif condition="${pdict.reCaptchaConfig}">
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+</isif>
+
+<form action="${pdict.createAccountUrl}" class="registration js-registration-form" method="POST"
+    name="${pdict.profileForm.htmlName}">
 
     <div class="form-group
         <isif condition=" ${!!pdict.profileForm.customer.email.mandatory === true}">required</isif>">
         <label class="form-control-label" for="registration-form-email">
             <isprint value="${pdict.profileForm.customer.email.label}" encoding="htmlcontent" />
         </label>
+
         <input type="text" class="form-control" id="registration-form-email"
             data-missing-error="${Resource.msg('error.message.required', 'forms', null)}"
             data-pattern-mismatch="${Resource.msg('error.message.parse.email.profile.form', 'forms', null)}"
@@ -24,14 +31,17 @@
         <label class="form-control-label" for="registration-form-password">
             <isprint value="${pdict.profileForm.login.password.label}" encoding="htmlcontent" />
         </label>
-        <input type="password" class="form-control" id="registration-form-password"
-            data-missing-error="${Resource.msg('error.message.required', 'forms', null)}"
-            data-range-error="${Resource.msg('error.message.8_255characters', 'forms', null)}"
-            aria-describedby="form-password-error" autocomplete="off" <isprint
-            value=${pdict.profileForm.login.password.attributes} encoding="off" />>
-        <span class="toggle-password">
-            <i class="fa fa-eye-slash"></i>
-        </span>
+        <div class="d-flex">
+            <input type="password" class="form-control password-input" id="registration-form-password"
+                data-missing-error="${Resource.msg('error.message.required', 'forms', null)}"
+                data-range-error="${Resource.msg('error.message.8_255characters', 'forms', null)}"
+                aria-describedby="form-password-error" autocomplete="off" <isprint
+                value=${pdict.profileForm.login.password.attributes} encoding="off" />>
+        <!-- Add toggle eye icon -->
+            <span class="input-group-text btn js-toggle-password">
+                <i class="fa fa-eye"></i>
+            </span>
+        </div>
         <div class="invalid-feedback" id="form-password-error"></div>
     </div>
 
@@ -45,8 +55,11 @@
     </div>
 
     <input type="hidden" name="${pdict.csrf.tokenName}" value="${pdict.csrf.token}" />
+    <!-- Add attributes to html button (from reCAPTHCA docs)-->
+    <button type="submit" class="btn btn-block btn-primary js-registration-submit-btn g-recaptcha"
+        data-sitekey="${pdict.reCaptchaConfig.siteKey || ''}" data-callback='onSubmitHandleToken' data-action='submit'
+        data-verify-url="${pdict.reCaptchaConfig.verifyUrl || ''}">
 
-    <button type="submit" class="btn btn-block btn-primary">
         ${Resource.msg('button.createaccount.registration', 'registration', null)}
     </button>
     <div class="privacy-policy">
