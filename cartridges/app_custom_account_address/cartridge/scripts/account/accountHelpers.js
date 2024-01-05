@@ -2,12 +2,12 @@
 
 var base = module.superModule;
 
-
 /**
  * Creates an account model for the current customer
  * @param {Object} req - local instance of request object
  * @returns {Object} a plain object of the current customer's account
  */
+
 base.getAccountModel = function (req) {
     var AccountModel = require('*/cartridge/models/account');
     var AddressModel = require('*/cartridge/models/address');

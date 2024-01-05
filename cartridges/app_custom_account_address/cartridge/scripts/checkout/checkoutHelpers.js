@@ -6,14 +6,7 @@ var base = module.superModule;
 var collections = require('*/cartridge/scripts/util/collections');
 
 var BasketMgr = require('dw/order/BasketMgr');
-var HookMgr = require('dw/system/HookMgr');
-var OrderMgr = require('dw/order/OrderMgr');
-var PaymentInstrument = require('dw/order/PaymentInstrument');
-var PaymentMgr = require('dw/order/PaymentMgr');
 var Order = require('dw/order/Order');
-var Status = require('dw/system/Status');
-var Resource = require('dw/web/Resource');
-var Site = require('dw/system/Site');
 var Transaction = require('dw/system/Transaction');
 
 var AddressModel = require('*/cartridge/models/address');
@@ -91,7 +84,6 @@ base.copyCustomerAddressToBilling = function (address) {
  * @param {dw.order.Shipment} [shipmentOrNull] - the target Shipment
  */
 base.copyShippingAddressToShipment = function (shippingData, shipmentOrNull) {
-    var data = shippingData
     var currentBasket = BasketMgr.getCurrentBasket();
     var shipment = shipmentOrNull || currentBasket.defaultShipment;
 
@@ -147,7 +139,5 @@ base.copyBillingAddressToBasket = function (address, currentBasket) {
         billingAddress.custom.vat = address.raw.custom.v_vat;
     });
 }
-
-
 
 module.exports = base

@@ -11,8 +11,6 @@ var base = require("base/checkout/address");
  * @returns {Object} - the jQuery / DOMElement
  */
 base.methods.optionValueForAddress = function (shipping, selected, order, options) {
-    console.log('custom','address','optionValueForAddress',shipping
-    );
     var safeOptions = options || {};
     var isBilling = safeOptions.type && safeOptions.type === 'billing';
     var className = safeOptions.className || '';
@@ -26,7 +24,6 @@ base.methods.optionValueForAddress = function (shipping, selected, order, option
 
     if (isBilling && isNew && !order.billing.matchingAddressId) {
         shippingAddress = order.billing.billingAddress.address || {};
-        console.log(shippingAddress,'shippingAddress','custom','address','optionValueForAddress');
         isNew = false;
         isSelected = true;
         safeShipping.UUID = 'manual-entry';
@@ -134,7 +131,6 @@ base.methods.optionValueForAddress = function (shipping, selected, order, option
  * @returns {Object} - a JSON object with all values
  */
 base.methods.getAddressFieldsFromUI = function (form) {
-    console.log('custom','address','getAddressFieldsFromUI',form);
     var address = {
         firstName: $('input[name$=_firstName]', form).val(),
         lastName: $('input[name$=_lastName]', form).val(),

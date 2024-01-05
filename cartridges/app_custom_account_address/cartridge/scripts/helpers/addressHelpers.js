@@ -8,7 +8,7 @@ var base = module.superModule;
  * @param {*} address - Address to copy from
  */
 
-function updateAddressFields (newAddress, address) {
+base.updateAddressFields= function(newAddress, address) {
     newAddress.setAddress1(address.address1 || '');
     newAddress.setAddress2(address.address2 || '');
     newAddress.setCity(address.city || '');
@@ -103,5 +103,4 @@ base.gatherShippingAddresses = function(order) {
     }
     return allAddresses;
 }
-base.updateAddressFields = updateAddressFields;
 module.exports = base;

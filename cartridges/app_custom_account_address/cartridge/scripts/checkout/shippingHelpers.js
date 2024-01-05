@@ -9,20 +9,37 @@ var base = module.superModule;
  */
 base.getAddressFromRequest = function (req) {
     var reqForm = req.form
-    return {
-        firstName: req.form.firstName,
-        lastName: req.form.lastName,
-        address1: req.form.address1,
-        address2: req.form.address2,
-        city: req.form.city,
-        stateCode: req.form.stateCode,
-        postalCode: req.form.postalCode,
-        countryCode: req.form.countryCode,
-        phone: req.form.phone,
-        companyName: req.form.companyName,
-       vat: req.form.vat,
-
-    };
+    if(req.form.firstName){
+        return {
+            firstName: req.form.firstName,
+            lastName: req.form.lastName,
+            address1: req.form.address1,
+            address2: req.form.address2,
+            city: req.form.city,
+            stateCode: req.form.stateCode,
+            postalCode: req.form.postalCode,
+            countryCode: req.form.countryCode,
+            phone: req.form.phone,
+            companyName: req.form.companyName,
+           vat: req.form.vat,
+    
+        };
+    }else{
+        return {
+            firstName: req.form.firstName,
+            lastName: req.form.lastName,
+            address1: req.form.address1,
+            address2: req.form.address2,
+            city: req.form.city,
+            stateCode: req.form.stateCode,
+            postalCode: req.form.postalCode,
+            countryCode: req.form.countryCode,
+            phone: req.form.phone,
+            companyName: '',
+             vat: '',
+        };
+    }
+  
 }
 
 module.exports = base

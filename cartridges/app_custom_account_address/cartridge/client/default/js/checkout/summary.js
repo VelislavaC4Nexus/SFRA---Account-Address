@@ -2,13 +2,12 @@
 
 var base = require('base/checkout/summary')
 
-
 /**
  * updates the order product shipping summary for an order model
  * @param {Object} order - the order model
  */
+
 base.updateOrderProductSummaryInformation = function (order) {
-    console.log('custom','summary','updateOrderProductSummaryInformation');
     var $productSummary = $('<div />');
     order.shipping.forEach(function (shipping) {
         shipping.productLineItems.items.forEach(function (lineItem) {
@@ -122,7 +121,4 @@ base.updateOrderProductSummaryInformation = function (order) {
     });
 }
 
-module.exports = {
-    updateTotals: updateTotals,
-    updateOrderProductSummaryInformation: updateOrderProductSummaryInformation
-};
+module.exports = base;

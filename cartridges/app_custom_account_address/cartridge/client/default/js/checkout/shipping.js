@@ -7,7 +7,6 @@ var base = require("base/checkout/shipping");
  * @param {Object} shipping - the shipping (shipment model) model
  */
 base.methods.updateShippingAddressFormValues = function (shipping) {
-    console.log("custom",'shipping',"updateShippingAddressFormValues");
     var addressObject = $.extend({}, shipping.shippingAddress);
     console.log("addressObject" + addressObject);
 
@@ -61,7 +60,6 @@ base.methods.updateShippingAddressFormValues = function (shipping) {
     $('body').trigger('shipping:updateShippingAddressFormValues', { shipping: shipping });
 }
 
-
 /**
  * Update the read-only portion of the shipment display (per PLI)
  * @param {Object} productLineItem - the productLineItem model
@@ -70,8 +68,8 @@ base.methods.updateShippingAddressFormValues = function (shipping) {
  * @param {Object} [options] - options for updating PLI summary info
  * @param {Object} [options.keepOpen] - if true, prevent changing PLI view mode to 'view'
  */
+
 base.methods.updatePLIShippingSummaryInformation = function (productLineItem, shipping, order, options) {
-    console.log("custom",'shipping',"updatePLIShippingSummaryInformation");
     var $pli = $('input[value=' + productLineItem.UUID + ']');
     var form = $pli && $pli.length > 0 ? $pli[0].form : null;
 
@@ -163,12 +161,12 @@ base.methods.updatePLIShippingSummaryInformation = function (productLineItem, sh
  * @param {Object} order - the order object
  */
 base.methods.clearShippingForms = function (order) {
-    console.log("custom",'shipping',"clearShippingForms");;
+    console.log("clear");
     order.shipping.forEach(function (shipping) {
         $('input[value=' + shipping.UUID + ']').each(function (formIndex, el) {
             var form = el.form;
             if (!form) return;
-
+            console.log("clear");
             $('input[name$=_firstName]', form).val('');
             $('input[name$=_lastName]', form).val('');
             $('input[name$=_address1]', form).val('');
@@ -180,7 +178,7 @@ base.methods.clearShippingForms = function (order) {
 
             $('input[name$=_phone]', form).val('');
             $('input[name$=_companyName]', form).val('');
-            $('input[name$=_vat]', form).val('');
+            $('input[name=_vat]', form).val('');
 
             $('input[name$=_isGift]', form).prop('checked', false);
             $('textarea[name$=_giftMessage]', form).val('');

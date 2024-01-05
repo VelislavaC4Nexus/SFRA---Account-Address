@@ -17,9 +17,6 @@ const reCaptcha = require('~/cartridge/scripts/middleware/mwReCaptcha');
  * @param {category} - sensitive
  * @param {serverfunction} - append
  */
-server.append('Show', reCaptcha.getReCAPTCHAConfig, function (req, res, next) {
-    const viewData = res.getViewData();
-    next()
-});
+server.append('Show', reCaptcha.getReCAPTCHAConfig);
 
 module.exports = server.exports();

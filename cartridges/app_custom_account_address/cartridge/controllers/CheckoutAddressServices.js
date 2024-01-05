@@ -10,7 +10,6 @@ server.extend(module.superModule);
 var COHelpers = require('*/cartridge/scripts/checkout/checkoutHelpers');
 var csrfProtection = require('*/cartridge/scripts/middleware/csrf');
 
-
 /**
  * CheckoutAddressServices-AddNewAddress : The CheckoutAddressServices-AddNewAddress. Only In multiShip. get invoked when saving a new shipping address
  * @name Base/CheckoutAddressServices-AddNewAddress

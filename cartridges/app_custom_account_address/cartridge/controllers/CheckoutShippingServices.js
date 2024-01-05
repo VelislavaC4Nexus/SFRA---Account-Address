@@ -91,7 +91,7 @@ server.replace('SelectShippingMethod', server.middleware.https, function (req, r
                 shippingAddress.setCountryCode(address.countryCode || '');
                 shippingAddress.setPhone(address.phone || '');
                 shippingAddress.companyName = address.companyName || '';
-                shippingAddress.vat = address.vat || '';
+                shippingAddress.custom.vat = address.vat || '';
 
                 ShippingHelper.selectShippingMethod(shipment, shippingMethodID);
 
@@ -321,7 +321,6 @@ server.replace(
         var ShippingHelper = require("*/cartridge/scripts/checkout/shippingHelpers");
         var Locale = require("dw/util/Locale");
         var basketCalculationHelpers = require("*/cartridge/scripts/helpers/basketCalculationHelpers");
-
         var currentBasket = BasketMgr.getCurrentBasket();
 
         if (!currentBasket) {

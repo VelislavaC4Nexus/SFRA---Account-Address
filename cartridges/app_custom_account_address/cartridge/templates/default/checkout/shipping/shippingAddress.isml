@@ -8,43 +8,6 @@
     <isinclude template="account/components/addressFormRadioBtn" />
 </div>
 
-<div class="row company-name-vat">
-    <div class="col-sm-6">
-        <div class="form-group; 
-            ${addressFields.companyName.mandatory === true ? 'required' : ''}
-            ${addressFields.companyName.htmlName}">
-            <label class="form-control-label" for="shippingCompanyName${lineItem ? lineItem.UUID : 'default'}">
-                ${Resource.msg('label.input.companyName', 'forms', null)}
-            </label>
-            <input autofocus type="text" class="form-control shippingCompanyName"
-                id="shippingCompanyName${lineItem ? lineItem.UUID : 'default'}"
-                aria-describedby="${lineItem ? lineItem.UUID : 'default'}CompanyName"
-                value="${shippingAddress.companyName || ''}" <isprint value="${addressFields.companyName.attributes}"
-                encoding="off" />
-            autocomplete="shipping given-name" >
-            <div class="invalid-feedback" id="${lineItem ? lineItem.UUID : 'default'}CompanyName">
-                <isprint value="${addressFields.companyName.error}">
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="form-group
-            ${addressFields.vat.mandatory === true ? 'required' : ''}
-            ${addressFields.vat.htmlName}">
-            <label class="form-control-label" for="shippingVat${lineItem ? lineItem.UUID : 'default'}">
-                ${Resource.msg('label.input.vat', 'forms', null)}
-            </label>
-            <input type="text" class="form-control shippingVat" id="shippingVat${lineItem ? lineItem.UUID : 'default'}"
-                aria-describedby="${lineItem ? lineItem.UUID : 'default'}Vat" value="${shippingAddress.vat || ''}"
-                <isprint value="${addressFields.vat.attributes}" encoding="off" />
-            autocomplete="shipping family-name">
-            <div class="invalid-feedback" id="${lineItem ? lineItem.UUID : 'default'}Vat">
-                <isprint value="${addressFields.vat.error}">
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="row">
     <div class="col-sm-6">
         <div class="form-group
@@ -79,6 +42,43 @@
             autocomplete="shipping family-name">
             <div class="invalid-feedback" id="${lineItem ? lineItem.UUID : 'default'}LastName">
                 <isprint value="${addressFields.lastName.error}">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row company-name-vat">
+    <div class="col-sm-6">
+        <div class="form-group; 
+            ${addressFields.companyName.mandatory === true ? 'required' : ''}
+            ${addressFields.companyName.htmlName}">
+            <label class="form-control-label" for="shippingCompanyName${lineItem ? lineItem.UUID : 'default'}">
+                ${Resource.msg('label.input.companyName', 'forms', null)}
+            </label>
+            <input autofocus type="text" class="form-control shippingCompanyName"
+                id="shippingCompanyName${lineItem ? lineItem.UUID : 'default'}"
+                aria-describedby="${lineItem ? lineItem.UUID : 'default'}CompanyName"
+                value="${shippingAddress.companyName || ''}" <isprint value="${addressFields.companyName.attributes}"
+                encoding="off" />
+            autocomplete="shipping given-name" >
+            <div class="invalid-feedback" id="${lineItem ? lineItem.UUID : 'default'}CompanyName">
+                <isprint value="${addressFields.companyName.error}">
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group
+            ${addressFields.vat.mandatory === true ? 'required' : ''}
+            ${addressFields.vat.htmlName}">
+            <label class="form-control-label" for="shippingVat${lineItem ? lineItem.UUID : 'default'}">
+                ${Resource.msg('label.input.vat', 'forms', null)}
+            </label>
+            <input type="text" class="form-control shippingVat" id="shippingVat${lineItem ? lineItem.UUID : 'default'}"
+                aria-describedby="${lineItem ? lineItem.UUID : 'default'}Vat" value="${shippingAddress.vat || ''}"
+                <isprint value="${addressFields.vat.attributes}" encoding="off" />
+            autocomplete="shipping family-name">
+            <div class="invalid-feedback" id="${lineItem ? lineItem.UUID : 'default'}Vat">
+                <isprint value="${addressFields.vat.error}">
             </div>
         </div>
     </div>

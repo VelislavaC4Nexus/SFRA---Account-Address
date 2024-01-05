@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <form xmlns="http://www.demandware.com/xml/form/2008-04-19">
 	<field formid="addressId" label="label.input.addressid" type="string" mandatory="true" max-length="20" missing-error="error.message.required" range-error="error.message.20orless" />
-
+	<!-- Comapny Name -->
 	<field formid="companyName" label="label.input.companyName" type="string" mandatory="false" binding="companyName" max-length="50" missing-error="address.companyName.missing" range-error="error.message.50orless" />
-
+	<!-- VAT -->
 	<field formid="vat" label="label.input.vat" type="string" mandatory="false" binding="custom.v_vat" max-length="20" missing-error="address.vat.missing" range-error="error.message.20orless" />
 
 	<field formid="firstName" label="label.input.firstname.profile" type="string" mandatory="true" binding="firstName" max-length="50" missing-error="address.firstname.missing" range-error="error.message.50orless" />

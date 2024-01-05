@@ -6,6 +6,7 @@
  * @param {dw.order.OrderAddress} addressObject - User's address
  * @returns {Object} an object that contains information about the users address
  */
+
 function createAddressObject(addressObject) {
     var result;
     if (addressObject) {
