@@ -144,7 +144,6 @@ base.methods.getAddressFieldsFromUI = function (form) {
         companyName: $('input[name$=_companyName]', form).val(),
         vat: $('input[name$=_vat]', form).val(),
     };
-    console.log(address);
     return address;
 }
 

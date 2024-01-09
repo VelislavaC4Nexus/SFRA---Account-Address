@@ -3,7 +3,7 @@
         data-address1="" data-address2=""
         data-city="" data-state-code=""
         data-country-code="" data-postal-code=""
-        data-phone="">
+        data-phone="" data-company-name="" data-vat="">
     ${Resource.msg('msg.add.new.address', 'checkout', null)}
 </option>
 <isif condition="${pdict.order.shipping[0].shippingAddress}">

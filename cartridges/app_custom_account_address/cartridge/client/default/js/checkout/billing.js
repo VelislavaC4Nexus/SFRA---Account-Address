@@ -7,9 +7,7 @@ var base = require("base/checkout/billing");
  * @param {Object} order - the order model
  */
 base.methods.updateBillingAddress = function(order) {
-    console.log('updateBillingAddress',"custom");
     var billing = order.billing;
-    console.log(billing.billingAddress);
    
     if (!billing.billingAddress || !billing.billingAddress.address) return;
 

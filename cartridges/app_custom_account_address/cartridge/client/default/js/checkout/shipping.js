@@ -7,7 +7,6 @@ var base = require("base/checkout/shipping");
  * @param {Object} shipping - the shipping (shipment model) model
  */
 base.methods.updateShippingAddressFormValues = function (shipping) {
-    console.log("updateShippingAddressFormValues","custom");
     var addressObject = $.extend({}, shipping.shippingAddress);
 
     if (!addressObject) {
@@ -70,7 +69,6 @@ base.methods.updateShippingAddressFormValues = function (shipping) {
  */
 
 base.methods.updatePLIShippingSummaryInformation = function (productLineItem, shipping, order, options) {
-    console.log("updatePLIShippingSummaryInformation","custom");
     var $pli = $('input[value=' + productLineItem.UUID + ']');
     var form = $pli && $pli.length > 0 ? $pli[0].form : null;
 
@@ -154,44 +152,6 @@ base.methods.updatePLIShippingSummaryInformation = function (productLineItem, sh
         order: order,
         options: options
     });
-}
-
-
-/**
- * Clear out all the shipping form values and select the new address in the drop down
- * @param {Object} order - the order object
- */
-base.methods.clearShippingForms = function (order) {
-    console.log("clear","custom");
-    order.shipping.forEach(function (shipping) {
-        $('input[value=' + shipping.UUID + ']').each(function (formIndex, el) {
-            var form = el.form;
-            if (!form) return;
-            console.log("clear");
-            $('input[name$=_firstName]', form).val('');
-            $('input[name$=_lastName]', form).val('');
-            $('input[name$=_address1]', form).val('');
-            $('input[name$=_address2]', form).val('');
-            $('input[name$=_city]', form).val('');
-            $('input[name$=_postalCode]', form).val('');
-            $('select[name$=_stateCode],input[name$=_stateCode]', form).val('');
-            $('select[name$=_country]', form).val('');
-
-            $('input[name$=_phone]', form).val('');
-            $('input[name$=_companyName]', form).val('');
-            $('input[name$=_vat]', form).val('');
-
-            $('input[name$=_isGift]', form).prop('checked', false);
-            $('textarea[name$=_giftMessage]', form).val('');
-            $(form).find('.gift-message').addClass('d-none');
-
-            $(form).attr('data-address-mode', 'new');
-            var addressSelectorDropDown = $('.addressSelector option[value=new]', form);
-            $(addressSelectorDropDown).prop('selected', true);
-        });
-    });
-
-    $('body').trigger('shipping:clearShippingForms', { order: order });
 }
 
 module.exports = base;

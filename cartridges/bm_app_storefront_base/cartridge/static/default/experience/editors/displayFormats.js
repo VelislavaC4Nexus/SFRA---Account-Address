@@ -36,7 +36,6 @@
     const inputs = rootEditorElement.querySelectorAll('input[name="displayFormat"]');
     Array.from(inputs).forEach(input => input.addEventListener('change', event => {
       const selectedValue = event.target.value;
-      console.log("selectedValue:", selectedValue);
       emit({
         type: 'sfcc:value',
         payload: selectedValue ? { value: selectedValue } : null

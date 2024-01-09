@@ -47,23 +47,6 @@ server.post("CheckReCaptchaScore", server.middleware.https, reCaptcha.getReCAPTC
         });
     }
 
-
-    // const reCaptchaService = require('~/cartridge/scripts/services/reCaptchaService');
-    // const response = reCaptchaService.call({ token: token, secret: reCaptchaConfiguration.secretKey }).object;
-
-    // const siteTreshold = reCaptchaConfiguration.threshold;
-
-    // if (response.score >= siteTreshold) {
-    //     res.json({
-    //         success: true
-    //     });
-    // } else {
-    //     res.json({
-    //         success: false,
-    //         errorMessage: Resource.msg('recaptcha.error.low.score', 'recaptcha', null)
-    //     })
-    // }
-
     next();
 });
 

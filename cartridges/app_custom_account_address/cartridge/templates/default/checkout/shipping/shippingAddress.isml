@@ -46,8 +46,9 @@
         </div>
     </div>
 </div>
-
+<!-- Business Address fields  -->
 <div class="row company-name-vat">
+  <!-- Company Name field  -->
     <div class="col-sm-6">
         <div class="form-group; 
             ${addressFields.companyName.mandatory === true ? 'required' : ''}
@@ -66,6 +67,7 @@
             </div>
         </div>
     </div>
+      <!-- VAT field  -->
     <div class="col-sm-6">
         <div class="form-group
             ${addressFields.vat.mandatory === true ? 'required' : ''}
