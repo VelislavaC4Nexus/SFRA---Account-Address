@@ -6,6 +6,8 @@
 
 const server = require("server");
 const reCaptcha = require('~/cartridge/scripts/middleware/mwReCaptcha');
+const reCaptchaHelpers = require('~/cartridge/scripts/helpers/reCaptchaHelpers');
+
 
 /**
  * ReCaptcha-CheckReCaptchaScore  : This endpoint is called via ajax request when Create Account submit button is clicked 
@@ -32,23 +34,35 @@ server.post("CheckReCaptchaScore", server.middleware.https, reCaptcha.getReCAPTC
         return next();
     }
 
-    const reCaptchaConfiguration = res.getViewData().reCaptchaConfig;
+    const reCaptchaConfiguration = res.getViewData(token, reCaptchaConfiguration).reCaptchaConfig;
 
-    const reCaptchaService = require('~/cartridge/scripts/services/reCaptchaService');
-    const response = reCaptchaService.call({ token: token, secret: reCaptchaConfiguration.secretKey }).object;
+    const reCaptchaResponse=reCaptchaHelpers.validateReCaptcha(token,reCaptchaConfiguration)
 
-    const siteTreshold = reCaptchaConfiguration.threshold;
-
-    if (response.score >= siteTreshold) {
-        res.json({
-            success: true
-        });
+    if (reCaptchaResponse.success) {
+        res.json({ success: true });
     } else {
         res.json({
             success: false,
             errorMessage: Resource.msg('recaptcha.error.low.score', 'recaptcha', null)
-        })
+        });
     }
+
+
+    // const reCaptchaService = require('~/cartridge/scripts/services/reCaptchaService');
+    // const response = reCaptchaService.call({ token: token, secret: reCaptchaConfiguration.secretKey }).object;
+
+    // const siteTreshold = reCaptchaConfiguration.threshold;
+
+    // if (response.score >= siteTreshold) {
+    //     res.json({
+    //         success: true
+    //     });
+    // } else {
+    //     res.json({
+    //         success: false,
+    //         errorMessage: Resource.msg('recaptcha.error.low.score', 'recaptcha', null)
+    //     })
+    // }
 
     next();
 });

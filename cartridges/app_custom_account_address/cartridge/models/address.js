@@ -37,8 +37,8 @@ function createAddressObject(addressObject) {
             result.stateCode = '';
         }
 
-        if (addressObject.custom && Object.hasOwnProperty.call(addressObject.custom, 'v_vat')) {
-            result.vat = addressObject.custom.v_vat;
+        if (addressObject.custom && Object.hasOwnProperty.call(addressObject.custom, 'vat')) {
+            result.vat = addressObject.custom.vat;
         } else if (addressObject.custom && Object.hasOwnProperty.call(addressObject.custom, 'vat')) {
             result.vat = addressObject.custom.vat
         }

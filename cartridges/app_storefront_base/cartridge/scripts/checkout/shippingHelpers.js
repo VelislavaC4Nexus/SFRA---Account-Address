@@ -34,6 +34,7 @@ function getShippingModels(currentBasket, customer, containerView) {
  * @returns {Object} - raw JSON representing address form data
  */
 function getAddressFromRequest(req) {
+    var test = req;
     return {
         firstName: req.form.firstName,
         lastName: req.form.lastName,
@@ -47,7 +48,7 @@ function getAddressFromRequest(req) {
     };
 }
 
-/**
+/**storefront-reference-architecture-master/cartridges/app_storefront_address_change/cartridge/controllers/CheckoutShippingServices.js
  * Returns the first shipping method (and maybe prevent in store pickup)
  * @param {dw.util.Collection} methods - Applicable methods from ShippingShipmentModel
  * @param {boolean} filterPickupInStore - whether to exclude PUIS method

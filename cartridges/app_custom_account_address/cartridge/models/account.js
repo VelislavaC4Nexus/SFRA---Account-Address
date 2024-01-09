@@ -1,6 +1,7 @@
 'use strict';
 
 var AddressModel = require('*/cartridge/models/address');
+var base = module.superModule
 
 /**
  * Creates an array of plain object that contains address book addresses, if any exist
@@ -40,7 +41,7 @@ function getPreferredAddress(addressBook) {
  * @constructor
  */
 function account(currentCustomer, addressModel, orderModel) {
-    module.superModule.call(this, currentCustomer, addressModel, orderModel);
+    base.call(this, currentCustomer, addressModel, orderModel);
     this.addresses = getAddresses(currentCustomer.addressBook);
     this.preferredAddress =  addressModel || getPreferredAddress(currentCustomer.addressBook);
     

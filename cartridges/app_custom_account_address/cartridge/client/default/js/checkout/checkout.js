@@ -3,8 +3,8 @@
 var customerHelpers = require('base/checkout/customer');
 var addressHelpers = require('./address');
 var shippingHelpers = require('./shipping');
-var billingHelpers = require('base/checkout/billing');
-var summaryHelpers = require('base/checkout/summary');
+var billingHelpers = require('./billing');
+var summaryHelpers = require('./summary');
 var formHelpers = require('base/checkout/formErrors');
 var scrollAnimate = require('base/components/scrollAnimate');
 

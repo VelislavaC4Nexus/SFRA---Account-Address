@@ -7,8 +7,8 @@ var base = require("base/checkout/shipping");
  * @param {Object} shipping - the shipping (shipment model) model
  */
 base.methods.updateShippingAddressFormValues = function (shipping) {
+    console.log("updateShippingAddressFormValues","custom");
     var addressObject = $.extend({}, shipping.shippingAddress);
-    console.log("addressObject" + addressObject);
 
     if (!addressObject) {
         addressObject = {
@@ -70,6 +70,7 @@ base.methods.updateShippingAddressFormValues = function (shipping) {
  */
 
 base.methods.updatePLIShippingSummaryInformation = function (productLineItem, shipping, order, options) {
+    console.log("updatePLIShippingSummaryInformation","custom");
     var $pli = $('input[value=' + productLineItem.UUID + ']');
     var form = $pli && $pli.length > 0 ? $pli[0].form : null;
 
@@ -161,7 +162,7 @@ base.methods.updatePLIShippingSummaryInformation = function (productLineItem, sh
  * @param {Object} order - the order object
  */
 base.methods.clearShippingForms = function (order) {
-    console.log("clear");
+    console.log("clear","custom");
     order.shipping.forEach(function (shipping) {
         $('input[value=' + shipping.UUID + ']').each(function (formIndex, el) {
             var form = el.form;
@@ -178,7 +179,7 @@ base.methods.clearShippingForms = function (order) {
 
             $('input[name$=_phone]', form).val('');
             $('input[name$=_companyName]', form).val('');
-            $('input[name=_vat]', form).val('');
+            $('input[name$=_vat]', form).val('');
 
             $('input[name$=_isGift]', form).prop('checked', false);
             $('textarea[name$=_giftMessage]', form).val('');

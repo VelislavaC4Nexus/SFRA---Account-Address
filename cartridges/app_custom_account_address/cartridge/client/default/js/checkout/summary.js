@@ -8,6 +8,8 @@ var base = require('base/checkout/summary')
  */
 
 base.updateOrderProductSummaryInformation = function (order) {
+    console.log("updateOrderProductSummaryInformation" , 'custom');
+
     var $productSummary = $('<div />');
     order.shipping.forEach(function (shipping) {
         shipping.productLineItems.items.forEach(function (lineItem) {

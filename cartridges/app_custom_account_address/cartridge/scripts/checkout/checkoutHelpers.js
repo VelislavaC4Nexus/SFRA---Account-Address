@@ -44,7 +44,7 @@ base.copyCustomerAddressToShipment = function (address, shipmentOrNull) {
         shippingAddress.setCountryCode(countryCode.value);
         shippingAddress.setPhone(address.phone);
         shippingAddress.companyName = address.companyName;
-        shippingAddress.custom.vat = address.raw.custom.v_vat;
+        shippingAddress.custom.vat = address.raw.custom.vat;
     });
 }
 
@@ -74,7 +74,7 @@ base.copyCustomerAddressToBilling = function (address) {
             billingAddress.setPhone(address.phone);
         }
         billingAddress.companyName = address.companyName;
-        billingAddress.custom.vat = address.raw.custom.v_vat;
+        billingAddress.custom.vat = address.raw.custom.vat;
     });
 }
 
@@ -136,7 +136,7 @@ base.copyBillingAddressToBasket = function (address, currentBasket) {
             billingAddress.setPhone(address.phone);
         }
         billingAddress.companyName = address.companyName;
-        billingAddress.custom.vat = address.raw.custom.v_vat;
+        billingAddress.custom.vat = address.custom.vat;
     });
 }
 

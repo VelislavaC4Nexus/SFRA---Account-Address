@@ -33,7 +33,7 @@ base.updateAddressFields= function(newAddress, address) {
     newAddress.setSuffix(address.suffix || '');
     newAddress.setSuite(address.suite || '');
     newAddress.setTitle(address.title || '');
-    newAddress.custom.v_vat = address.vat || '';
+    newAddress.custom.vat = address.vat || '';
 }
 
 /**

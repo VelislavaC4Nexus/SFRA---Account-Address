@@ -12,6 +12,7 @@ var scrollAnimate = require('../components/scrollAnimate');
  * @param {Object} customer - the customer model
  */
 function updateShippingAddressSelector(productLineItem, shipping, order, customer) {
+    console.log('updateShippingAddressSelector','base');
     var uuidEl = $('input[value=' + productLineItem.UUID + ']');
     var shippings = order.shipping;
 
@@ -96,6 +97,7 @@ function updateShippingAddressSelector(productLineItem, shipping, order, custome
  * @param {Object} shipping - the shipping (shipment model) model
  */
 function updateShippingAddressFormValues(shipping) {
+    console.log('updateShippingAddressFormValues','base');
     var addressObject = $.extend({}, shipping.shippingAddress);
 
     if (!addressObject) {
@@ -149,6 +151,7 @@ function updateShippingAddressFormValues(shipping) {
  * @param {Object} shipping - the shipping (shipment model) model
  */
 function updateShippingMethods(shipping) {
+    console.log('updateShippingMethods','base');
     var uuidEl = $('input[value=' + shipping.UUID + ']');
     if (uuidEl && uuidEl.length > 0) {
         $.each(uuidEl, function (shipmentIndex, el) {
@@ -206,6 +209,7 @@ function updateShippingMethods(shipping) {
  * @param {jQuery} $shippingForm - current shipping form
  */
 function updateShippingMethodList($shippingForm) {
+    console.log('updateShippingMethodList','base');
     // delay for autocomplete!
     setTimeout(function () {
         var $shippingMethodList = $shippingForm.find('.shipping-method-list');
@@ -244,6 +248,7 @@ function updateShippingMethodList($shippingForm) {
  * @param {Object} order - the order model
  */
 function updateShippingSummaryInformation(shipping, order) {
+    console.log('updateShippingSummaryInformation','base');
     $('[data-shipment-summary=' + shipping.UUID + ']').each(function (i, el) {
         var $container = $(el);
         var $shippingAddressLabel = $container.find('.shipping-addr-label');
@@ -304,6 +309,7 @@ function updateShippingSummaryInformation(shipping, order) {
  * @param {Object} [options.keepOpen] - if true, prevent changing PLI view mode to 'view'
  */
 function updatePLIShippingSummaryInformation(productLineItem, shipping, order, options) {
+    console.log('updatePLIShippingSummaryInformation','base');
     var $pli = $('input[value=' + productLineItem.UUID + ']');
     var form = $pli && $pli.length > 0 ? $pli[0].form : null;
 
@@ -382,6 +388,7 @@ function updatePLIShippingSummaryInformation(productLineItem, shipping, order, o
  * @param {Object} shipping - the shipping (shipment model) model
  */
 function updateProductLineItemShipmentUUIDs(productLineItem, shipping) {
+    console.log('updateProductLineItemShipmentUUIDs','base');
     $('input[value=' + productLineItem.UUID + ']').each(function (key, pli) {
         var form = pli.form;
         $('[name=shipmentUUID]', form).val(shipping.UUID);
@@ -405,6 +412,7 @@ function updateProductLineItemShipmentUUIDs(productLineItem, shipping) {
  * @param {Object} [options.keepOpen] - if true, prevent changing PLI view mode to 'view'
  */
 function updateShippingInformation(shipping, order, customer, options) {
+    console.log('updateProductLineItemShipmentUUIDs','base');
     // First copy over shipmentUUIDs from response, to each PLI form
     order.shipping.forEach(function (aShipping) {
         aShipping.productLineItems.items.forEach(function (productLineItem) {
@@ -436,6 +444,7 @@ function updateShippingInformation(shipping, order, customer, options) {
  * @param {Object} order - checkout model to use as basis of new truth
  */
 function updateMultiShipInformation(order) {
+    console.log('updateMultiShipInformation','base');
     var $checkoutMain = $('#checkout-main');
     var $checkbox = $('[name=usingMultiShipping]');
     var $submitShippingBtn = $('button.submit-shipping');
@@ -458,6 +467,7 @@ function updateMultiShipInformation(order) {
   * @param {Object} message - Error message to display
   */
 function createErrorNotification(message) {
+    console.log('createErrorNotification','base');
     var errorHtml = '<div class="alert alert-danger alert-dismissible valid-cart-error ' +
     'fade show" role="alert">' +
     '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
@@ -475,6 +485,7 @@ function createErrorNotification(message) {
  *  valid model data.
  */
 function shippingFormResponse(defer, data) {
+    console.log('shippingFormResponse','base');
     var isMultiShip = $('#checkout-main').hasClass('multi-ship');
     var formSelector = isMultiShip
         ? '.multi-shipping .active form'
@@ -519,6 +530,7 @@ function shippingFormResponse(defer, data) {
  * @param {Object} order - the order object
  */
 function clearShippingForms(order) {
+    console.log('clearShippingForms');
     order.shipping.forEach(function (shipping) {
         $('input[value=' + shipping.UUID + ']').each(function (formIndex, el) {
             var form = el.form;
@@ -696,6 +708,7 @@ module.exports = {
     },
 
     selectShippingMethod: function () {
+        console.log('selectShippingMethod','base');
         var baseObj = this;
 
         $('.shipping-method-list').change(function () {
@@ -947,6 +960,7 @@ module.exports = {
     },
 
     updateShippingList: function () {
+        console.log('updateShippingList','base');
         var baseObj = this;
 
         $('select[name$="shippingAddress_addressFields_states_stateCode"]')
@@ -960,6 +974,7 @@ module.exports = {
     },
 
     updateDataAddressMode: function () {
+        console.log('updateDataAddressMode','base');
         $('body').on('shipping:updateDataAddressMode', function (e, data) {
             $(data.form).attr('data-address-mode', data.mode);
         });
