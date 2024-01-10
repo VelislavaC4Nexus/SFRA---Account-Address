@@ -22,7 +22,7 @@ const reCaptchaHelpers = require('~/cartridge/scripts/helpers/reCaptchaHelpers')
  */
 server.post("CheckReCaptchaScore", server.middleware.https, reCaptcha.getReCAPTCHAConfig, function (req, res, next) {
     const Resource = require('dw/web/Resource');
-    
+
     const token = req.form.token;
 
     if (!token) {
@@ -36,7 +36,7 @@ server.post("CheckReCaptchaScore", server.middleware.https, reCaptcha.getReCAPTC
 
     const reCaptchaConfiguration = res.getViewData(token, reCaptchaConfiguration).reCaptchaConfig;
 
-    const reCaptchaResponse=reCaptchaHelpers.validateReCaptcha(token,reCaptchaConfiguration)
+    const reCaptchaResponse = reCaptchaHelpers.validateReCaptcha(token, reCaptchaConfiguration)
 
     if (reCaptchaResponse.success) {
         res.json({ success: true });
